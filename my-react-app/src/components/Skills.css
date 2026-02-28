@@ -1,0 +1,48 @@
+.skills {
+  background: var(--bg);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem 2.5rem;
+}
+
+.skill-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.skill-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.skill-pct {
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.skill-track {
+  background: var(--border);
+  border-radius: 4px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #fff));
+  border-radius: 4px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}

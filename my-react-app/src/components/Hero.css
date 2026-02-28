@@ -1,0 +1,237 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.hero-text {
+  flex: 1;
+  text-align: left;
+}
+
+/* Photo */
+.hero-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 240px;
+  height: 240px;
+}
+
+.hero-photo-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  animation: spin 3s linear infinite;
+  z-index: 2;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 4px solid var(--bg);
+  display: block;
+}
+
+.hero-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  border: 4px solid var(--bg);
+  background: var(--card-bg);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 680px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-text {
+    text-align: center;
+  }
+  .hero-cta {
+    justify-content: center;
+  }
+  .hero-photo-wrap {
+    width: 180px;
+    height: 180px;
+  }
+  .hero-photo {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+.hero-greeting {
+  font-size: 1.1rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0 0 1rem;
+  padding-bottom: 0.15em;
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title-wrap {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  min-height: 2.5rem;
+}
+
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 0.75rem 2rem;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.btn-outline {
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 4px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(12px); opacity: 0; }
+}

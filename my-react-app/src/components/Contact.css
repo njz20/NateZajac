@@ -1,0 +1,51 @@
+.contact {
+  background: var(--bg-alt);
+  text-align: center;
+}
+
+.contact-inner {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.contact-inner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-blurb {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  background: var(--card-bg);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 20%, transparent);
+}
