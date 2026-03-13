@@ -70,7 +70,7 @@ export default function Hero() {
         <div className="hero-photo-wrap">
           <div className="hero-photo-ring" />
           <img
-            src="/profile.jpg"
+            src={`${import.meta.env.BASE_URL}profile.jpg`}
             alt="Nate Zajac"
             className="hero-photo"
             onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling.style.display = 'flex' }}
