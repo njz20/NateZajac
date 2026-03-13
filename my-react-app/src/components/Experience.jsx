@@ -11,28 +11,47 @@ const JOBS = [
       'Led migration from legacy system to modern stack for multiple clients (React)',
       'Collaborated with cross-functional teams in an agile environment to ship features on tight deadlines',
     ],
-  },
-  {
-    title: 'Software Engineer',
-    company: 'Guardian Life Insurance Company',
-    period: 'September 2024 – April 2026',
-    bullets: [
-      'Developed RESTful APIs consumed by web and mobile clients',
-      'Improved test coverage from 0 to above 80% in multiple repositories',
-      'Participated in code reviews and contributed to internal tooling',
-    ],
-  },
-    {
-    title: 'Software Engineer',
-    company: 'Discover',
-    period: 'February 2022 – August 2024',
-    bullets: [
-      'Led migration of legacy application to a modern stack',
-      'Improved test suite and coverage in all aspects (end-to-end, performance, integration, accessbility tests)',
-      'Participated in code reviews and contributed to internal tooling',
+    placements: [
+      {
+        title: 'Software Engineer',
+        client: 'Guardian Life Insurance Company',
+        period: 'September 2024 – April 2026',
+        bullets: [
+          'Developed RESTful APIs consumed by web and mobile clients',
+          'Improved test coverage from 0 to above 80% in multiple repositories',
+          'Participated in code reviews and contributed to internal tooling',
+        ],
+      },
+      {
+        title: 'Software Engineer',
+        client: 'Discover',
+        period: 'February 2022 – August 2024',
+        bullets: [
+          'Led migration of legacy application to a modern stack',
+          'Improved test suite and coverage in all aspects (end-to-end, performance, integration, accessibility tests)',
+          'Participated in code reviews and contributed to internal tooling',
+        ],
+      },
     ],
   },
 ]
+
+function PlacementCard({ placement }) {
+  return (
+    <div className="placement-card">
+      <div className="placement-header">
+        <div>
+          <h4 className="placement-title">{placement.title}</h4>
+          <p className="placement-client">{placement.client}</p>
+        </div>
+        <span className="job-period">{placement.period}</span>
+      </div>
+      <ul className="job-bullets">
+        {placement.bullets.map((b, i) => <li key={i}>{b}</li>)}
+      </ul>
+    </div>
+  )
+}
 
 function JobCard({ job, index }) {
   const ref = useRef(null)
@@ -41,7 +60,7 @@ function JobCard({ job, index }) {
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true) },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     )
     if (ref.current) obs.observe(ref.current)
     return () => obs.disconnect()
@@ -65,6 +84,14 @@ function JobCard({ job, index }) {
         <ul className="job-bullets">
           {job.bullets.map((b, i) => <li key={i}>{b}</li>)}
         </ul>
+        {job.placements && (
+          <div className="placements">
+            <p className="placements-label">Client Placements</p>
+            {job.placements.map((p, i) => (
+              <PlacementCard key={i} placement={p} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
