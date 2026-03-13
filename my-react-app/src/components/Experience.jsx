@@ -3,33 +3,29 @@ import './Experience.css'
 
 const JOBS = [
   {
-    title: 'Associate Consultant',
+    title: 'Frontend Software Engineer – React/TypeScript Consultant',
     company: 'Capgemini',
     period: 'July 2021 – Present',
-    bullets: [
-      'Implemented robust testing suites for the full tech stack on multiple projects',
-      'Led migration from legacy system to modern stack for multiple clients (React)',
-      'Collaborated with cross-functional teams in an agile environment to ship features on tight deadlines',
-    ],
+    bullets: [],
     placements: [
       {
-        title: 'Software Engineer',
+        title: 'Frontend Software Engineer',
         client: 'Guardian Life Insurance Company',
-        period: 'September 2024 – April 2026',
+        period: '2024 – Present',
         bullets: [
-          'Developed RESTful APIs consumed by web and mobile clients',
-          'Improved test coverage from 0 to above 80% in multiple repositories',
-          'Participated in code reviews and contributed to internal tooling',
+          'Lead front-end React development on a large agile team, translating Figma designs into pixel-perfect, responsive components',
+          'Established unit testing practices from the ground up using Jest, growing code coverage from 0% to 80% across the frontend codebase',
+          'Championed adoption of AI-powered development tools across the team, measurably boosting team productivity',
         ],
       },
       {
-        title: 'Software Engineer',
-        client: 'Discover',
-        period: 'February 2022 – August 2024',
+        title: 'Frontend Software Engineer',
+        client: 'Discover Financial Services',
+        period: '2022 – 2024',
         bullets: [
-          'Led migration of legacy application to a modern stack',
-          'Improved test suite and coverage in all aspects (end-to-end, performance, integration, accessibility tests)',
-          'Participated in code reviews and contributed to internal tooling',
+          'Led React/TypeScript frontend development during migration of a legacy application to modern architecture, improving maintainability and performance',
+          'Served as lead developer in a cross-functional agile team, coordinating sprints and delivering features on schedule',
+          'Owned unit, end-to-end, and accessibility testing strategy using Jest and Playwright, growing code coverage from 0% to 90%',
         ],
       },
     ],
@@ -81,9 +77,11 @@ function JobCard({ job, index }) {
           </div>
           <span className="job-period">{job.period}</span>
         </div>
-        <ul className="job-bullets">
-          {job.bullets.map((b, i) => <li key={i}>{b}</li>)}
-        </ul>
+        {job.bullets.length > 0 && (
+          <ul className="job-bullets">
+            {job.bullets.map((b, i) => <li key={i}>{b}</li>)}
+          </ul>
+        )}
         {job.placements && (
           <div className="placements">
             <p className="placements-label">Client Placements</p>
